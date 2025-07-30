@@ -1,4 +1,3 @@
-// api/episodes.js
 export default async function handler(req, res) {
   // Enable CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -18,17 +17,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    const username = process.env.REACT_APP_MUX_TOKEN_ID;
-    const password = process.env.REACT_APP_MUX_TOKEN_SECRET;
+    const username = process.env.MUX_TOKEN_ID;
+    const password = process.env.MUX_TOKEN_SECRET;
 
     if (!username || !password) {
       console.error("Missing Mux credentials");
       return res.status(500).json({
         error: "Mux credentials not configured",
-        debug: {
-          hasUsername: !!username,
-          hasPassword: !!password,
-        },
       });
     }
 
@@ -49,7 +44,6 @@ export default async function handler(req, res) {
       console.error("Mux API error:", response.status, errorText);
       return res.status(response.status).json({
         error: `Mux API error: ${response.status}`,
-        details: errorText,
       });
     }
 
@@ -60,7 +54,6 @@ export default async function handler(req, res) {
     res.status(500).json({
       error: "Internal server error",
       message: error.message,
-      stack: process.env.NODE_ENV === "development" ? error.stack : undefined,
     });
   }
 }
