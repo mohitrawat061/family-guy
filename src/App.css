@@ -1,0 +1,949 @@
+@import url("https://fonts.googleapis.com/css2?family=Creepster&family=Bangers&family=Permanent+Marker&display=swap");
+
+:root {
+  --primary-color: #ffd700; /* Gold */
+  --secondary-color: #ff4500; /* Orange Red */
+  --accent-color: #1e90ff; /* Dodger Blue */
+  --dark-color: #2c3e50; /* Dark Blue */
+  --light-color: #ecf0f1; /* Light Gray */
+  --bg-color: #0d1117; /* Dark Background */
+  --card-bg: rgba(30, 41, 59, 0.8); /* Card Background */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Permanent Marker", cursive;
+  background-color: var(--bg-color);
+  color: var(--light-color);
+  overflow-x: hidden;
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(255, 69, 0, 0.1) 0%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(30, 144, 255, 0.1) 0%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 215, 0, 0.05) 0%,
+      transparent 50%
+    );
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+.family-guy-app {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Floating Characters - RESTORED WITH PNG IMAGES */
+.floating-peter,
+.floating-stewie,
+.floating-brian {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.floating-peter {
+  top: 10%;
+  left: -150px;
+  background-image: url("/images/peter.png");
+  animation: floatAcross 20s infinite linear;
+}
+
+.floating-stewie {
+  bottom: 15%;
+  right: -150px;
+  background-image: url("/images/stewie.png");
+  animation: floatAcrossReverse 18s infinite linear;
+}
+
+.floating-brian {
+  top: 40%;
+  left: -150px;
+  background-image: url("/images/brian.png");
+  animation: floatAcross 25s infinite linear;
+}
+
+@keyframes floatAcross {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    left: -150px;
+  }
+  25% {
+    transform: translateX(0) translateY(-30px) rotate(90deg);
+  }
+  50% {
+    transform: translateX(0) translateY(0) rotate(180deg);
+  }
+  75% {
+    transform: translateX(0) translateY(30px) rotate(270deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(360deg);
+    left: calc(100vw + 150px);
+  }
+}
+
+@keyframes floatAcrossReverse {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    right: -150px;
+  }
+  25% {
+    transform: translateX(0) translateY(30px) rotate(-90deg);
+  }
+  50% {
+    transform: translateX(0) translateY(0) rotate(-180deg);
+  }
+  75% {
+    transform: translateX(0) translateY(-30px) rotate(-270deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(-360deg);
+    right: calc(100vw + 150px);
+  }
+}
+
+/* Header */
+.family-guy-header {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 41, 59, 0.9) 0%,
+    rgba(30, 41, 59, 0.7) 100%
+  );
+  border-bottom: 4px solid var(--primary-color);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+/* RESTORED ORIGINAL LOGO */
+.family-guy-logo {
+  width: 80px;
+  height: 80px;
+  background-image: url("/images/family-guy-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.family-guy-header h1 {
+  font-family: "Bangers", cursive;
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  text-shadow: 3px 3px 0 var(--secondary-color), 6px 6px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.header-decoration {
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* RESTORED TV STATIC IMAGE */
+.tv-static {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/tv-static.png");
+  background-size: cover;
+  opacity: 0.2;
+  animation: static 0.5s infinite;
+}
+
+@keyframes static {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Main Content */
+.family-guy-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  position: relative;
+  z-index: 5;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-family: "Creepster", cursive;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  text-shadow: 2px 2px 0 var(--dark-color);
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  animation: titleGlow 3s infinite;
+}
+
+@keyframes titleGlow {
+  0%,
+  100% {
+    text-shadow: 2px 2px 0 var(--dark-color), 0 0 10px var(--accent-color);
+  }
+  50% {
+    text-shadow: 2px 2px 0 var(--dark-color), 0 0 20px var(--accent-color),
+      0 0 30px var(--accent-color);
+  }
+}
+
+.title-decoration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 20px;
+  background-color: var(--secondary-color);
+  z-index: 1;
+  border-radius: 10px;
+  opacity: 0.7;
+}
+
+/* Episode Grid */
+.episode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.episode-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.episode-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+  border-color: var(--primary-color);
+}
+
+.episode-card.selected {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.6);
+  animation: selectedPulse 2s infinite;
+}
+
+@keyframes selectedPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(30, 144, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(30, 144, 255, 0.8);
+  }
+}
+
+.episode-poster {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.episode-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.episode-card:hover .episode-poster img {
+  transform: scale(1.1);
+}
+
+.episode-number {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.episode-card:hover .play-overlay {
+  opacity: 1;
+}
+
+/* RESTORED PLAY BUTTON IMAGE */
+.play-button {
+  width: 60px;
+  height: 60px;
+  background-image: url("/images/play-button.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: playPulse 1.5s infinite;
+}
+
+@keyframes playPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.episode-info {
+  padding: 15px;
+  background-color: rgba(44, 62, 80, 0.9);
+}
+
+.episode-info h3 {
+  font-size: 1.2rem;
+  color: var(--light-color);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Player Section */
+.player-section {
+  margin-top: 40px;
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 3px solid var(--primary-color);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.player-section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.player-section.ready {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+}
+
+.player-header {
+  padding: 15px 20px;
+  background-color: rgba(44, 62, 80, 0.9);
+  border-bottom: 2px solid var(--secondary-color);
+  position: relative;
+}
+
+.player-header h2 {
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 0 var(--dark-color);
+  text-align: center;
+}
+
+.player-decoration {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  height: 100%;
+  width: 100px;
+}
+
+/* RESTORED TV FRAME IMAGE */
+.tv-frame {
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/tv-frame.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.player-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background-color: #000;
+}
+
+.player-wrapper mux-player {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+}
+
+.player-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--light-color);
+  z-index: 2;
+}
+
+.griffin-loader-small {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.peter-loader-small,
+.stewie-loader-small,
+.brian-loader-small {
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* RESTORED HEAD IMAGES FOR LOADERS */
+.peter-loader-small {
+  background-image: url("/images/peter-head.png");
+  animation: bounce 1s infinite;
+}
+
+.stewie-loader-small {
+  background-image: url("/images/stewie-head.png");
+  animation: bounce 1s infinite 0.3s;
+}
+
+.brian-loader-small {
+  background-image: url("/images/brian-head.png");
+  animation: bounce 1s infinite 0.6s;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.player-error {
+  text-align: center;
+}
+
+.stewie-error-small {
+  width: 60px;
+  height: 60px;
+  background-image: url("/images/stewie-angry.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto 15px;
+  animation: angry 1s infinite;
+}
+
+@keyframes angry {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+}
+
+.player-error button {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Permanent Marker", cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.player-error button:hover {
+  background-color: var(--accent-color);
+  color: var(--light-color);
+  transform: scale(1.05);
+}
+
+.player-footer {
+  padding: 20px;
+  background-color: rgba(44, 62, 80, 0.9);
+  border-top: 2px solid var(--secondary-color);
+  display: flex;
+  justify-content: center;
+}
+
+.character-quote {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.quote-bubble {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  padding: 15px;
+  border-radius: 20px;
+  position: relative;
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.2rem;
+  max-width: 300px;
+  animation: bubbleFloat 3s infinite;
+}
+
+@keyframes bubbleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.quote-bubble::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--light-color);
+}
+
+/* RESTORED QUAGMIRE IMAGE */
+.quagmire {
+  width: 80px;
+  height: 80px;
+  background-image: url("/images/quagmire.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: giggle 3s infinite;
+}
+
+@keyframes giggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* Footer */
+.family-guy-footer {
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  margin-top: 50px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(30, 41, 59, 0.3) 100%
+  );
+}
+
+.footer-decoration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 20px;
+}
+
+.couch,
+.tv {
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* RESTORED COUCH AND TV IMAGES */
+.couch {
+  width: 200px;
+  background-image: url("/images/couch.png");
+}
+
+.tv {
+  width: 150px;
+  background-image: url("/images/tv.png");
+}
+
+.family-guy-footer p {
+  color: var(--light-color);
+  opacity: 0.7;
+  font-size: 1rem;
+}
+
+/* Loading Screen */
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(255, 69, 0, 0.2) 0%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(30, 144, 255, 0.2) 0%,
+      transparent 20%
+    );
+}
+
+.griffin-loader {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.peter-loader,
+.stewie-loader,
+.brian-loader {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* RESTORED LOADING SCREEN CHARACTER IMAGES */
+.peter-loader {
+  background-image: url("/images/peter.png");
+  animation: bounce 1s infinite;
+}
+
+.stewie-loader {
+  background-image: url("/images/stewie.png");
+  animation: bounce 1s infinite 0.3s;
+}
+
+.brian-loader {
+  background-image: url("/images/brian.png");
+  animation: bounce 1s infinite 0.6s;
+}
+
+.loading-screen h2 {
+  font-family: "Bangers", cursive;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 0 var(--secondary-color);
+  animation: loadingPulse 2s infinite;
+}
+
+@keyframes loadingPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Error Screen */
+.error-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 0, 0, 0.1) 0%,
+    transparent 50%
+  );
+}
+
+.error-container {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--secondary-color);
+}
+
+/* RESTORED STEWIE ERROR IMAGE */
+.stewie-error {
+  width: 150px;
+  height: 150px;
+  background-image: url("/images/stewie-angry.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto 20px;
+  animation: angry 2s infinite;
+}
+
+.error-container h2 {
+  font-family: "Creepster", cursive;
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.error-container p {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.error-container button {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.error-container button:hover {
+  background-color: var(--accent-color);
+  color: var(--light-color);
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .family-guy-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .episode-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .episode-poster {
+    height: 220px;
+  }
+
+  .player-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .quote-bubble {
+    font-size: 1rem;
+    max-width: 200px;
+  }
+
+  .quagmire {
+    width: 60px;
+    height: 60px;
+  }
+
+  .footer-decoration {
+    gap: 30px;
+  }
+
+  .couch,
+  .tv {
+    height: 70px;
+  }
+
+  .couch {
+    width: 140px;
+  }
+
+  .tv {
+    width: 100px;
+  }
+
+  .floating-peter,
+  .floating-stewie,
+  .floating-brian {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .family-guy-header h1 {
+    font-size: 2rem;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .episode-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .episode-poster {
+    height: 180px;
+  }
+
+  .episode-info h3 {
+    font-size: 1rem;
+  }
+
+  .player-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .quote-bubble {
+    font-size: 0.9rem;
+    max-width: 150px;
+  }
+
+  .quagmire {
+    width: 50px;
+    height: 50px;
+  }
+
+  .floating-peter,
+  .floating-stewie,
+  .floating-brian {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .family-guy-logo {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Additional animations for enhanced experience */
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.episode-card.selected .episode-number {
+  animation: sparkle 1s infinite;
+}
+
+/* Hover effects for better interactivity */
+.episode-card:hover .episode-info h3 {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+/* Enhanced visual feedback */
+.player-section.ready .player-header h2 {
+  animation: titleGlow 2s infinite;
+}

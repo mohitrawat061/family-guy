@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/episodes.js": {
+      "runtime": "@vercel/node@18"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ]
+}
