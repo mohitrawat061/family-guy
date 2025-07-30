@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/episodes.js": {
-      "runtime": "@vercel/node@18"
+      "runtime": "@vercel/node@18.18.1"
     }
   },
   "rewrites": [
